@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'config.php';
+require_once '../config/config.php';
 
 if (!isset($_SESSION['user_id']) || !isset($_GET['id'])) {
     header("Location: login.php");
@@ -29,73 +29,8 @@ if (!$transaction) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Struk Pembayaran - Car Wash</title>
-    <style>
-        body {
-            font-family: 'Courier New', Courier, monospace;
-            background-color: #f0f8ff;
-            margin: 0;
-            padding: 20px;
-        }
-        .receipt {
-            max-width: 300px;
-            margin: 0 auto;
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        .receipt-header {
-            text-align: center;
-            margin-bottom: 20px;
-            border-bottom: 1px dashed #000;
-            padding-bottom: 10px;
-        }
-        .receipt-body {
-            margin-bottom: 20px;
-        }
-        .receipt-footer {
-            text-align: center;
-            border-top: 1px dashed #000;
-            padding-top: 10px;
-            font-size: 0.9em;
-        }
-        .detail-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 5px;
-        }
-        .amount {
-            font-weight: bold;
-        }
-        .btn {
-            display: block;
-            width: 100%;
-            padding: 5px;
-            background-color: #4169e1;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-            margin-top: 20px;
-        }
-        .btn:hover {
-            background-color: #1e90ff;
-        }
-        @media print {
-            body {
-                background: none;
-                padding: 0;
-            }
-            .receipt {
-                box-shadow: none;
-            }
-            .btn {
-                display: none;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="../assets/css/receipt.css">
+    <script src="../assets/js/receipt.js" defer></script>
 </head>
 <body>
     <div class="receipt">
@@ -150,14 +85,7 @@ if (!$transaction) {
             <p style="margin: 5px 0;">Silahkan datang kembali</p>
         </div>
 
-        <a href="dashboard.php" class="btn">Kembali ke Dashboard</a>
+        <a href="../index.php" class="btn">Kembali ke Dashboard</a>
     </div>
-
-    <script>
-        // Auto print when page loads
-        window.onload = function() {
-            window.print();
-        }
-    </script>
 </body>
 </html>

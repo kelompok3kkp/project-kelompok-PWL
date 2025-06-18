@@ -1,6 +1,6 @@
 <?php
 $host = 'localhost';
-$dbname = 'carwash_db';
+$dbname = 'db_carwash';
 $username = 'root';
 $password = '';
 

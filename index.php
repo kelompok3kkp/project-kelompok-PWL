@@ -1,9 +1,9 @@
 <?php
 session_start();
-require_once 'config.php';
+require_once 'config/config.php';
 
 if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
+    header("Location: pages/login.php");
     exit();
 }
 
@@ -36,89 +36,15 @@ $total = $stmt->fetch()['total'] ?? 0;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Car Wash</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f8ff;
-            margin: 0;
-            padding: 20px;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        .welcome {
-            color: #4169e1;
-        }
-        .actions {
-            display: flex;
-            gap: 10px;
-        }
-        .btn {
-            padding: 10px 20px;
-            background-color: #4169e1;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            text-decoration: none;
-        }
-        .btn:hover {
-            background-color: #1e90ff;
-        }
-        .btn-danger {
-            background-color: #dc3545;
-        }
-        .btn-danger:hover {
-            background-color: #c82333;
-        }
-        .summary {
-            background-color: #e8f4ff;
-            padding: 15px;
-            border-radius: 4px;
-            margin-bottom: 20px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        th, td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        th {
-            background-color: #4169e1;
-            color: white;
-        }
-        tr:hover {
-            background-color: #f5f5f5;
-        }
-        .empty-state {
-            text-align: center;
-            padding: 40px;
-            color: #666;
-        }
-    </style>
+    <link rel="stylesheet" href="./assets/css/dashboard.css">
 </head>
 <body>
     <div class="container">
         <div class="header">
             <h2 class="welcome">Selamat Datang, <?php echo htmlspecialchars($_SESSION['user_name']); ?>!</h2>
             <div class="actions">
-                <a href="new_transaction.php" class="btn">Transaksi Baru</a>
-                <a href="logout.php" class="btn btn-danger">Logout</a>
+                <a href="pages/new_transaction.php" class="btn">Transaksi Baru</a>
+                <a href="pages/logout.php" class="btn btn-danger">Logout</a>
             </div>
         </div>
 
@@ -169,7 +95,7 @@ $total = $stmt->fetch()['total'] ?? 0;
         <?php else: ?>
             <div class="empty-state">
                 <p>Belum ada transaksi hari ini</p>
-                <a href="new_transaction.php" class="btn">Buat Transaksi Baru</a>
+                <a href="pages/new_transaction.php" class="btn">Buat Transaksi Baru</a>
             </div>
         <?php endif; ?>
     </div>
