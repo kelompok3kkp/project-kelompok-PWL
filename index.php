@@ -86,7 +86,7 @@ $total = $stmt->fetch()['total'] ?? 0;
                             ?></td>
                             <td>Rp <?php echo number_format($trans['price'], 0, ',', '.'); ?></td>
                             <td>
-                                <a href="print_receipt.php?id=<?php echo $trans['id']; ?>" class="btn" target="_blank">Cetak Struk</a>
+                                <a href="pages/print_receipt.php?id=<?php echo $trans['id']; ?>" class="btn" target="_blank">Cetak Struk</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
